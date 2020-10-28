@@ -11,8 +11,7 @@ COPY [ "${NIFI_PACKAGE}", "/tmp/" ]
 
 RUN mkdir -p /tmp/nifi_package && \
     tar -xf /tmp/${NIFI_PACKAGE} -C "/tmp/nifi_package" --strip-components=1 && \
-    mkdir -p /tmp/nifi_package/conf/flow && \
-    mkdir -p /tmp/nifi_package/conf/archive && \
+    mkdir -p /tmp/nifi_package/conf && \
     mkdir -p /tmp/nifi_package/content_repository && \
     mkdir -p /tmp/nifi_package/database_repository && \
     mkdir -p /tmp/nifi_package/flowfile_repository && \
@@ -36,8 +35,8 @@ ENV NIFI_GID 2001
 
 ENV NIFI_HOME /opt/nifi
 
-RUN yum install -y java-11-openjdk-devel procps git python2 python2-jinja2 && \
-    yum clean all && \    
+RUN yum install -y java-11-openjdk-devel python2 python2-jinja2 && \
+    yum clean all && \
     mkdir -p ${NIFI_HOME} && \
     groupadd -r -g ${NIFI_GID} ${NIFI_GROUP} && \
     useradd -r -u ${NIFI_UID} -g ${NIFI_GROUP} -M -d ${NIFI_HOME} ${NIFI_USER}
@@ -57,8 +56,7 @@ VOLUME ${NIFI_HOME}/provenance_repository
 VOLUME ${NIFI_HOME}/state
 VOLUME ${NIFI_HOME}/work
 VOLUME ${NIFI_HOME}/logs
-VOLUME ${NIFI_HOME}/conf/flow
-VOLUME ${NIFI_HOME}/conf/archive
+VOLUME ${NIFI_HOME}/conf
 
 USER ${NIFI_USER}
 ENV JAVA_HOME=/usr/lib/jvm/java-11
