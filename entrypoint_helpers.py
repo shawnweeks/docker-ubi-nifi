@@ -7,7 +7,7 @@ import re
 env = {k: v
     for k, v in os.environ.items()}
 
-jenv = j2.Environment(loader=j2.FileSystemLoader('/opt/jinja-templates/'))
+jenv = j2.Environment(loader=j2.FileSystemLoader('/opt/jinja-templates/'), trim_blocks=True, lstrip_blocks=True)
 
 def gen_cfg(tmpl, target):
     print "Generating {} from template {}".format(target, tmpl)

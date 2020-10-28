@@ -15,11 +15,11 @@
 
 # Core Properties #
 nifi.flow.configuration.file=./conf/flow/flow.xml.gz
-nifi.flow.configuration.archive.enabled="{{ NIFI_FLOW_CONFIGURATION_ARCHIVE_ENABLED | default('true') }}"
+nifi.flow.configuration.archive.enabled={{ NIFI_FLOW_CONFIGURATION_ARCHIVE_ENABLED | default('true') }}
 nifi.flow.configuration.archive.dir=./conf/archive/
-nifi.flow.configuration.archive.max.time="{{ NIFI_FLOW_CONFIGURATION_ARCHIVE_MAX_TIME | default('30 days') }}"
-nifi.flow.configuration.archive.max.storage="{{ NIFI_FLOW_CONFIGURATION_ARCHIVE_MAX_STORAGE | default('500 MB') }}"
-nifi.flow.configuration.archive.max.count="{{ NIFI_FLOW_CONFIGURATION_ARCHIVE_MAX_COUNT | default('') }}"
+nifi.flow.configuration.archive.max.time={{ NIFI_FLOW_CONFIGURATION_ARCHIVE_MAX_TIME | default('30 days') }}
+nifi.flow.configuration.archive.max.storage={{ NIFI_FLOW_CONFIGURATION_ARCHIVE_MAX_STORAGE | default('500 MB') }}
+nifi.flow.configuration.archive.max.count={{ NIFI_FLOW_CONFIGURATION_ARCHIVE_MAX_COUNT | default('') }}
 nifi.flowcontroller.autoResumeState=true
 nifi.flowcontroller.graceful.shutdown.period=10 sec
 nifi.flowservice.writedelay.interval=500 ms
@@ -32,7 +32,7 @@ nifi.queue.backpressure.size=1 GB
 nifi.authorizer.configuration.file=./conf/authorizers.xml
 nifi.login.identity.provider.configuration.file=./conf/login-identity-providers.xml
 nifi.templates.directory=./conf/templates
-nifi.ui.banner.text="{{ NIFI_UI_BANNER_TEXT | default('') }}"
+nifi.ui.banner.text={{ NIFI_UI_BANNER_TEXT | default('') }}
 nifi.ui.autorefresh.interval=30 sec
 nifi.nar.library.directory=./lib
 nifi.nar.library.autoload.directory=./extensions
@@ -76,7 +76,7 @@ nifi.queue.swap.threshold=20000
 nifi.content.repository.implementation=org.apache.nifi.controller.repository.FileSystemRepository
 nifi.content.claim.max.appendable.size=1 MB
 nifi.content.repository.directory.default=./content_repository
-nifi.content.repository.archive.max.retention.period="{{ NIFI_CONTENT_REPOSITORY_ARCHIVE_MAX_RETENTION_PERIOD | default('7 days') }}"
+nifi.content.repository.archive.max.retention.period={{ NIFI_CONTENT_REPOSITORY_ARCHIVE_MAX_RETENTION_PERIOD | default('7 days') }}
 nifi.content.repository.archive.max.usage.percentage=50%
 nifi.content.repository.archive.enabled=true
 nifi.content.repository.always.sync=false
@@ -95,8 +95,8 @@ nifi.provenance.repository.encryption.key=
 
 # Persistent Provenance Repository Properties
 nifi.provenance.repository.directory.default=./provenance_repository
-nifi.provenance.repository.max.storage.time="{{ NIFI_PROVENANCE_REPOSITORY_MAX_STORAGE_TIME | default('30 days') }}"
-nifi.provenance.repository.max.storage.size="{{ NIFI_PROVENANCE_REPOSITORY_MAX_STORAGE_SIZE | default('10 GB') }}"
+nifi.provenance.repository.max.storage.time={{ NIFI_PROVENANCE_REPOSITORY_MAX_STORAGE_TIME | default('30 days') }}
+nifi.provenance.repository.max.storage.size={{ NIFI_PROVENANCE_REPOSITORY_MAX_STORAGE_SIZE | default('10 GB') }}
 nifi.provenance.repository.rollover.time=10 mins
 nifi.provenance.repository.rollover.size=100 MB
 nifi.provenance.repository.query.threads=2
@@ -107,7 +107,7 @@ nifi.provenance.repository.always.sync=false
 # EventType, FlowFileUUID, Filename, TransitURI, ProcessorID, AlternateIdentifierURI, Relationship, Details
 nifi.provenance.repository.indexed.fields=EventType, FlowFileUUID, Filename, ProcessorID, Relationship
 # FlowFile Attributes that should be indexed and made searchable.  Some examples to consider are filename, uuid, mime.type
-nifi.provenance.repository.indexed.attributes="{{ NIFI_PROVENANCE_REPOSITORY_INDEXED_ATTRIBUTES | default('') }}"
+nifi.provenance.repository.indexed.attributes={{ NIFI_PROVENANCE_REPOSITORY_INDEXED_ATTRIBUTES | default('') }}
 # Large values for the shard size will result in more Java heap usage when searching the Provenance Repository
 # but should provide better performance
 nifi.provenance.repository.index.shard.size=500 MB
@@ -126,43 +126,43 @@ nifi.components.status.repository.buffer.size=1440
 nifi.components.status.snapshot.frequency=1 min
 
 # Site to Site properties
-nifi.remote.input.host="{{ HOSTNAME }}"
-nifi.remote.input.secure="{{ NIFI_REMOTE_INPUT_SECURE | default('false') }}"
-nifi.remote.input.socket.port="{{ NIFI_REMOTE_INPUT_SOCKET_PORT | default('') }}"
-nifi.remote.input.http.enabled="{{ NIFI_REMOTE_INPUT_HTTP_ENABLED | default('true') }}"
+nifi.remote.input.host={{ HOSTNAME }}
+nifi.remote.input.secure={{ NIFI_REMOTE_INPUT_SECURE | default('false') }}
+nifi.remote.input.socket.port={{ NIFI_REMOTE_INPUT_SOCKET_PORT | default('') }}
+nifi.remote.input.http.enabled={{ NIFI_REMOTE_INPUT_HTTP_ENABLED | default('true') }}
 nifi.remote.input.http.transaction.ttl=30 sec
 nifi.remote.contents.cache.expiration=30 secs
 
 # web properties #
-nifi.web.http.host="{{ HOSTNAME }}"
-nifi.web.http.port="{{ NIFI_WEB_HTTP_PORT | default('8080') }}"
+nifi.web.http.host={{ HOSTNAME }}
+nifi.web.http.port={{ NIFI_WEB_HTTP_PORT | default('8080') }}
 nifi.web.http.network.interface.default=
-nifi.web.https.host="{{ HOSTNAME }}"
-nifi.web.https.port="{{ NIFI_WEB_HTTPS_PORT | default('') }}"
+nifi.web.https.host={{ HOSTNAME }}
+nifi.web.https.port={{ NIFI_WEB_HTTPS_PORT | default('') }}
 nifi.web.https.network.interface.default=
 nifi.web.jetty.working.directory=./work/jetty
 nifi.web.jetty.threads=200
 nifi.web.max.header.size=16 KB
-nifi.web.proxy.context.path="{{ NIFI_WEB_PROXY_CONTEXT_PATH | default('') }}"
-nifi.web.proxy.host="{{ NIFI_WEB_PROXY_HOST | default('') }}"
+nifi.web.proxy.context.path={{ NIFI_WEB_PROXY_CONTEXT_PATH | default('') }}
+nifi.web.proxy.host={{ NIFI_WEB_PROXY_HOST | default('') }}
 nifi.web.max.content.size=
 nifi.web.max.requests.per.second=30000
 nifi.web.should.send.server.version=true
 
 # security properties #
-nifi.sensitive.props.key="{{ NIFI_SENSITIVE_PROPS_KEY | default('') }}"
+nifi.sensitive.props.key={{ NIFI_SENSITIVE_PROPS_KEY | default('') }}
 nifi.sensitive.props.key.protected=
 nifi.sensitive.props.algorithm=PBEWITHMD5AND256BITAES-CBC-OPENSSL
 nifi.sensitive.props.provider=BC
 nifi.sensitive.props.additional.keys=
 
-nifi.security.keystore="{{ NIFI_SECURITY_KEYSTORE | default('') }}"
-nifi.security.keystoreType="{{ NIFI_SECURITY_KEYSTORE_TYPE | default('') }}"
-nifi.security.keystorePasswd="{{ NIFI_SECURITY_KEYSTORE_PASSWD | default('') }}"
-nifi.security.keyPasswd="{{ NIFI_SECURITY_KEY_PASSWD | default('') }}"
-nifi.security.truststore="{{ NIFI_SECURITY_TRUSTSTORE | default('') }}"
-nifi.security.truststoreType="{{ NIFI_SECURITY_TRUSTSTORE_TYPE | default('') }}"
-nifi.security.truststorePasswd="{{ NIFI_SECURITY_TRUSTSTORE_PASSWD | default('') }}"
+nifi.security.keystore={{ NIFI_SECURITY_KEYSTORE | default('') }}
+nifi.security.keystoreType={{ NIFI_SECURITY_KEYSTORE_TYPE | default('') }}
+nifi.security.keystorePasswd={{ NIFI_SECURITY_KEYSTORE_PASSWD | default('') }}
+nifi.security.keyPasswd={{ NIFI_SECURITY_KEY_PASSWD | default('') }}
+nifi.security.truststore={{ NIFI_SECURITY_TRUSTSTORE | default('') }}
+nifi.security.truststoreType={{ NIFI_SECURITY_TRUSTSTORE_TYPE | default('') }}
+nifi.security.truststorePasswd={{ NIFI_SECURITY_TRUSTSTORE_PASSWD | default('') }}
 nifi.security.user.authorizer=managed-authorizer
 nifi.security.allow.anonymous.authentication=false
 nifi.security.user.login.identity.provider=
@@ -190,9 +190,9 @@ nifi.security.user.knox.audiences=
 # (certificates, LDAP, Kerberos) can be treated the same internally in NiFi. The following example demonstrates normalizing
 # DNs from certificates and principals from Kerberos into a common identity string:
 #
-nifi.security.identity.mapping.pattern.dn="{{ NIFI_SECURITY_IDENTITY_MAPPING_PATTERN_DN | default('^(.*)$') }}"
-nifi.security.identity.mapping.value.dn="{{ NIFI_SECURITY_IDENTITY_MAPPING_VALUE_DN | default('$1') }}"
-nifi.security.identity.mapping.transform.dn="{{ NIFI_SECURITY_IDENTITY_MAPPING_TRANSFORM_DN | default('NONE') }}"
+nifi.security.identity.mapping.pattern.dn={{ NIFI_SECURITY_IDENTITY_MAPPING_PATTERN_DN | default('^(.*)$') }}
+nifi.security.identity.mapping.value.dn={{ NIFI_SECURITY_IDENTITY_MAPPING_VALUE_DN | default('$1') }}
+nifi.security.identity.mapping.transform.dn={{ NIFI_SECURITY_IDENTITY_MAPPING_TRANSFORM_DN | default('NONE') }}
 # nifi.security.identity.mapping.pattern.kerb=^(.*?)/instance@(.*?)$
 # nifi.security.identity.mapping.value.kerb=$1@$2
 # nifi.security.identity.mapping.transform.kerb=UPPER
@@ -201,41 +201,41 @@ nifi.security.identity.mapping.transform.dn="{{ NIFI_SECURITY_IDENTITY_MAPPING_T
 # These properties allow normalizing group names coming from external sources like LDAP. The following example
 # lowercases any group name.
 #
-nifi.security.group.mapping.pattern.anygroup="{{ NIFI_SECURITY_GROUP_MAPPING_PATTERN_DN | default('^(.*)$') }}"
-nifi.security.group.mapping.value.anygroup="{{ NIFI_SECURITY_GROUP_MAPPING_PATTERN_DN | default('$1') }}"
-nifi.security.group.mapping.transform.anygroup="{{ NIFI_SECURITY_GROUP_MAPPING_PATTERN_DN | default('LOWER') }}"
+nifi.security.group.mapping.pattern.anygroup={{ NIFI_SECURITY_GROUP_MAPPING_PATTERN_DN | default('^(.*)$') }}
+nifi.security.group.mapping.value.anygroup={{ NIFI_SECURITY_GROUP_MAPPING_PATTERN_DN | default('$1') }}
+nifi.security.group.mapping.transform.anygroup={{ NIFI_SECURITY_GROUP_MAPPING_PATTERN_DN | default('LOWER') }}
 
 # cluster common properties (all nodes must have same values) #
-nifi.cluster.protocol.heartbeat.interval="{{ NIFI_CLUSTER_PROTOCOL_HEARTBEAT_INTERVAL | default('5 sec') }}"
-nifi.cluster.protocol.heartbeat.missable.max="{{ NIFI_CLUSTER_PROTOCOL_HEARTBEAT_MISSABLE_MAX | default('8') }}"
-nifi.cluster.protocol.is.secure="{{ NIFI_CLUSTER_PROTOCOL_IS_SECURE | default('false') }}"
+nifi.cluster.protocol.heartbeat.interval={{ NIFI_CLUSTER_PROTOCOL_HEARTBEAT_INTERVAL | default('5 sec') }}
+nifi.cluster.protocol.heartbeat.missable.max={{ NIFI_CLUSTER_PROTOCOL_HEARTBEAT_MISSABLE_MAX | default('8') }}
+nifi.cluster.protocol.is.secure={{ NIFI_CLUSTER_PROTOCOL_IS_SECURE | default('false') }}
 
 # cluster node properties (only configure for cluster nodes) #
-nifi.cluster.is.node="{{ NIFI_CLUSTER_IS_NODE | default('false') }}"
-nifi.cluster.node.address="{{ NIFI_CLUSTER_NODE_ADDRESS | default('') }}"
-nifi.cluster.node.protocol.port="{{ NIFI_CLUSTER_NODE_PROTOCOL_PORT | default('') }}"
-nifi.cluster.node.protocol.threads="{{ NIFI_CLUSTER_NODE_PROTOCOL_THREADS | default('10') }}"
-nifi.cluster.node.protocol.max.threads="{{ NIFI_CLUSTER_NODE_PROTOCOL_MAX_THREADS | default('50') }}"
-nifi.cluster.node.event.history.size="{{ NIFI_CLUSTER_NODE_EVENT_HISTORY_SIZE | default('25') }}"
-nifi.cluster.node.connection.timeout="{{ NIFI_CLUSTER_NODE_CONNECTION_TIMEOUT | default('5 sec') }}"
-nifi.cluster.node.read.timeout="{{ NIFI_CLUSTER_NODE_READ_TIMEOUT | default('5 sec') }}"
-nifi.cluster.node.max.concurrent.requests="{{ NIFI_CLUSTER_NODE_MAX_CONCURRENT_REQUESTS | default('100') }}"
-nifi.cluster.firewall.file="{{ NIFI_CLUSTER_FIREWALL_FILE | default('') }}"
-nifi.cluster.flow.election.max.wait.time="{{ NIFI_CLUSTER_FLOW_ELECTION_MAX_WAIT_TIME | default('5 mins') }}"
-nifi.cluster.flow.election.max.candidates="{{ NIFI_CLUSTER_FLOW_ELECTION_MAX_CANDIDATES | default('') }}"
+nifi.cluster.is.node={{ NIFI_CLUSTER_IS_NODE | default('false') }}
+nifi.cluster.node.address={{ NIFI_CLUSTER_NODE_ADDRESS | default('') }}
+nifi.cluster.node.protocol.port={{ NIFI_CLUSTER_NODE_PROTOCOL_PORT | default('') }}
+nifi.cluster.node.protocol.threads={{ NIFI_CLUSTER_NODE_PROTOCOL_THREADS | default('10') }}
+nifi.cluster.node.protocol.max.threads={{ NIFI_CLUSTER_NODE_PROTOCOL_MAX_THREADS | default('50') }}
+nifi.cluster.node.event.history.size={{ NIFI_CLUSTER_NODE_EVENT_HISTORY_SIZE | default('25') }}
+nifi.cluster.node.connection.timeout={{ NIFI_CLUSTER_NODE_CONNECTION_TIMEOUT | default('5 sec') }}
+nifi.cluster.node.read.timeout={{ NIFI_CLUSTER_NODE_READ_TIMEOUT | default('5 sec') }}
+nifi.cluster.node.max.concurrent.requests={{ NIFI_CLUSTER_NODE_MAX_CONCURRENT_REQUESTS | default('100') }}
+nifi.cluster.firewall.file={{ NIFI_CLUSTER_FIREWALL_FILE | default('') }}
+nifi.cluster.flow.election.max.wait.time={{ NIFI_CLUSTER_FLOW_ELECTION_MAX_WAIT_TIME | default('5 mins') }}
+nifi.cluster.flow.election.max.candidates={{ NIFI_CLUSTER_FLOW_ELECTION_MAX_CANDIDATES | default('') }}
 
 # cluster load balancing properties #
-nifi.cluster.load.balance.host="{{ HOSTNAME }}"
-nifi.cluster.load.balance.port="{{ NIFI_CLUSTER_LOAD_BALANCE_PORT | default('6342') }}"
-nifi.cluster.load.balance.connections.per.node="{{ NIFI_CLUSTER_LOAD_BALANCE_CONNECTIONS_PER_NODE | default('1') }}"
-nifi.cluster.load.balance.max.thread.count="{{ NIFI_CLUSTER_LOAD_BALANCE_MAX_THREAD_COUND | default('8') }}"
-nifi.cluster.load.balance.comms.timeout="{{ NIFI_CLUSTER_LOAD_BALANCE_COMMS_TIMEOUT | default('30 sec') }}"
+nifi.cluster.load.balance.host={{ HOSTNAME }}
+nifi.cluster.load.balance.port={{ NIFI_CLUSTER_LOAD_BALANCE_PORT | default('6342') }}
+nifi.cluster.load.balance.connections.per.node={{ NIFI_CLUSTER_LOAD_BALANCE_CONNECTIONS_PER_NODE | default('1') }}
+nifi.cluster.load.balance.max.thread.count={{ NIFI_CLUSTER_LOAD_BALANCE_MAX_THREAD_COUND | default('8') }}
+nifi.cluster.load.balance.comms.timeout={{ NIFI_CLUSTER_LOAD_BALANCE_COMMS_TIMEOUT | default('30 sec') }}
 
 # zookeeper properties, used for cluster management #
-nifi.zookeeper.connect.string="{{ NIFI_ZOOKEEPER_CONNECT_STRING | default('') }}"
-nifi.zookeeper.connect.timeout="{{ NIFI_ZOOKEEPER_CONNECT_TIMEOUT | default('10 secs') }}"
-nifi.zookeeper.session.timeout="{{ NIFI_ZOOKEEPER_SESSION_TIMEOUT | default('10 secs') }}"
-nifi.zookeeper.root.node="{{ NIFI_ZOOKEEPER_ROOT_NODE | default('/nifi') }}"
+nifi.zookeeper.connect.string={{ NIFI_ZOOKEEPER_CONNECT_STRING | default('') }}
+nifi.zookeeper.connect.timeout={{ NIFI_ZOOKEEPER_CONNECT_TIMEOUT | default('10 secs') }}
+nifi.zookeeper.session.timeout={{ NIFI_ZOOKEEPER_SESSION_TIMEOUT | default('10 secs') }}
+nifi.zookeeper.root.node={{ NIFI_ZOOKEEPER_ROOT_NODE | default('/nifi') }}
 
 # Zookeeper properties for the authentication scheme used when creating acls on znodes used for cluster management
 # Values supported for nifi.zookeeper.auth.type are "default", which will apply world/anyone rights on znodes

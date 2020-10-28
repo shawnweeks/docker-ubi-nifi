@@ -18,5 +18,7 @@ docker push $REGISTRY/atlassian-suite/docker-crowd-server-sso
 docker run --init -it --rm \
     --name nifi  \
     -p 8080:8080 \
+    -e NIFI_NODES=server1,server2,server3 \
+    --entrypoint bash \
     $REGISTRY/apache/nifi:1.12.1
 ```

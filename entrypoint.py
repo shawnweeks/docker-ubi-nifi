@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 
-from entrypoint_helpers import env, gen_cfg, set_props
+from entrypoint_helpers import env, gen_cfg
 
 NIFI_HOME = env["NIFI_HOME"]
 

@@ -283,6 +283,12 @@
         <property name="Legacy Authorized Users File"></property>
         <property name="Node Identity 1"></property>
         <property name="Node Group"></property>
+        {% if NIFI_NODES is defined %}
+        {% set NIFI_NODE_LIST = NIFI_NODES.split(',') %}
+        {% for NIFI_NODE in NIFI_NODE_LIST %}
+        <property name="Node Identity {{ loop.index }}">{{ NIFI_NODE }}</property>
+        {% endfor %}
+        {% endif %}
     </accessPolicyProvider>
 
     <!--
