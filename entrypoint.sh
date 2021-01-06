@@ -10,4 +10,8 @@ umask 0027
 export JAVA_OPTS="${JAVA_OPTS}"
 
 entrypoint.py
-${NIFI_HOME}/bin/nifi.sh run
+
+# Clears variables starting with NIFI_ to avoid any secret leakage.
+unset "${!NIFI_@}"
+
+${HOME}/bin/nifi.sh run
