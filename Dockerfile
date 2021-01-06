@@ -1,6 +1,6 @@
 ARG BASE_REGISTRY
-ARG BASE_IMAGE=redhat/ubi/ubi7
-ARG BASE_TAG=7.9
+ARG BASE_IMAGE=redhat/ubi/ubi8
+ARG BASE_TAG=8.3
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG} as build
 
@@ -23,8 +23,8 @@ RUN mkdir -p /tmp/nifi_package && \
 
 ###############################################################################
 ARG BASE_REGISTRY
-ARG BASE_IMAGE=redhat/ubi/ubi7
-ARG BASE_TAG=7.9
+ARG BASE_IMAGE=redhat/ubi/ubi8
+ARG BASE_TAG=8.3
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG}
 

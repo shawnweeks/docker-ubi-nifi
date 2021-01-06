@@ -1,16 +1,23 @@
+### Download Packages
+```shell
+export NIFI_VERSION=1.12.1
+wget https://archive.apache.org/dist/nifi/${NIFI_VERSION}/nifi-${NIFI_VERSION}-bin.tar.gz
+```
+
 ### Build Command
 ```shell
+export NIFI_VERSION=1.12.1
 docker build \
-    -t $REGISTRY/apache/nifi:1.12.1 \
+    -t ${REGISTRY}/apache/nifi:${NIFI_VERSION} \
     --build-arg BASE_REGISTRY=$REGISTRY \
-    --build-arg NIFI_VERSION=1.12.1 \
+    --build-arg NIFI_VERSION=${NIFI_VERSION} \
     .
 ```
 
 ### Push to Registry
 ```shell
-docker tag $REGISTRY/atlassian-suite/docker-crowd-server-sso:4.1.1 $REGISTRY/atlassian-suite/docker-crowd-server-sso:4.1.1.$(date +"%Y%m%d%H%M%S")
-docker push $REGISTRY/atlassian-suite/docker-crowd-server-sso
+export NIFI_VERSION=1.12.1
+docker push ${REGISTRY}/apache/nifi:${NIFI_VERSION}
 ```
 
 ### Simple Run Command
