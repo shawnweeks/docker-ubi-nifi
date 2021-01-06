@@ -212,8 +212,8 @@ nifi.cluster.protocol.is.secure={{ NIFI_CLUSTER_PROTOCOL_IS_SECURE | default('fa
 
 # cluster node properties (only configure for cluster nodes) #
 nifi.cluster.is.node={{ NIFI_CLUSTER_IS_NODE | default('false') }}
-nifi.cluster.node.address={{ NIFI_CLUSTER_NODE_ADDRESS | default('') }}
-nifi.cluster.node.protocol.port={{ NIFI_CLUSTER_NODE_PROTOCOL_PORT | default('') }}
+nifi.cluster.node.address={{ NIFI_CLUSTER_NODE_ADDRESS | default(HOSTNAME) }}
+nifi.cluster.node.protocol.port={{ NIFI_CLUSTER_NODE_PROTOCOL_PORT | default('11443') }}
 nifi.cluster.node.protocol.threads={{ NIFI_CLUSTER_NODE_PROTOCOL_THREADS | default('10') }}
 nifi.cluster.node.protocol.max.threads={{ NIFI_CLUSTER_NODE_PROTOCOL_MAX_THREADS | default('50') }}
 nifi.cluster.node.event.history.size={{ NIFI_CLUSTER_NODE_EVENT_HISTORY_SIZE | default('25') }}

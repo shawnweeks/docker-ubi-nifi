@@ -29,3 +29,10 @@ docker run --init -it --rm \
     --entrypoint bash \
     $REGISTRY/apache/nifi:1.12.1
 ```
+
+### Compose Run
+```shell
+export NIFI_VERSION=1.12.1
+export ZOOKEEPER_VERSION=3.6.2
+docker-compose up
+```

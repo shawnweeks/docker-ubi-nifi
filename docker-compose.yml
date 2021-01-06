@@ -1,0 +1,117 @@
+version: '3.7'
+
+volumes:
+    zk1-data:
+    zk2-data:
+    zk3-data:
+    nifi_cont_repo1-data:
+    nifi_db_repo1-data:
+    nifi_ff_repo1-data:
+    nifi_prv_repo1-data:
+    nifi_state1-data:
+    nifi_work1-data:
+    nifi_logs1-data:
+    nifi_conf1-data:
+    nifi_cont_repo2-data:
+    nifi_db_repo2-data:
+    nifi_ff_repo2-data:
+    nifi_prv_repo2-data:
+    nifi_state2-data:
+    nifi_work2-data:
+    nifi_logs2-data:
+    nifi_conf2-data: 
+    nifi_cont_repo3-data:
+    nifi_db_repo3-data:
+    nifi_ff_repo3-data:
+    nifi_prv_repo3-data:
+    nifi_state3-data:
+    nifi_work3-data:
+    nifi_logs3-data:
+    nifi_conf3-data: 
+
+services:
+  zk1:
+    image: ${REGISTRY}/apache/zookeeper:${ZOOKEEPER_VERSION}
+    init: true
+    volumes:
+       - zk1-data:/var/lib/zookeeper
+    hostname: zk1
+    environment:
+      ZK_NODE_ID: "1"
+      ZK_NODES: "zk1,zk2,zk3"
+
+  zk2:
+    image: ${REGISTRY}/apache/zookeeper:${ZOOKEEPER_VERSION}
+    init: true
+    volumes:
+       - zk2-data:/var/lib/zookeeper
+    hostname: zk1
+    environment:
+      ZK_NODE_ID: "2"
+      ZK_NODES: "zk1,zk2,zk3"
+
+  zk3:
+    image: ${REGISTRY}/apache/zookeeper:${ZOOKEEPER_VERSION}
+    init: true
+    volumes:
+       - zk3-data:/var/lib/zookeeper
+    hostname: zk1
+    environment:
+      ZK_NODE_ID: "3"
+      ZK_NODES: "zk1,zk2,zk3"
+  
+  nifi1:
+    image: ${REGISTRY}/apache/nifi:${NIFI_VERSION}
+    init: true
+    volumes:
+      - nifi_cont_repo1-data:/opt/nifi/content_repository
+      - nifi_db_repo1-data:/opt/nifi/database_repository
+      - nifi_ff_repo1-data:/opt/nifi/flowfile_repository
+      - nifi_prv_repo1-data:/opt/nifi/provenance_repository
+      - nifi_state1-data:/opt/nifi/state
+      - nifi_work1-data:/opt/nifi/work
+      - nifi_logs1-data:/opt/nifi/logs
+      - nifi_conf1-data:/opt/nifi/conf
+    ports:
+      - 8080:8080
+    hostname: nifi1
+    environment:
+      NIFI_CLUSTER_IS_NODE: "true"
+      NIFI_ZOOKEEPER_CONNECT_STRING: "zk1:2181,zk2:2181,zk3:2181"
+      NIFI_CLUSTER_FLOW_ELECTION_MAX_CANDIDATES: "3"
+
+  nifi2:
+    image: ${REGISTRY}/apache/nifi:${NIFI_VERSION}
+    init: true
+    volumes:
+      - nifi_cont_repo2-data:/opt/nifi/content_repository
+      - nifi_db_repo2-data:/opt/nifi/database_repository
+      - nifi_ff_repo2-data:/opt/nifi/flowfile_repository
+      - nifi_prv_repo2-data:/opt/nifi/provenance_repository
+      - nifi_state2-data:/opt/nifi/state
+      - nifi_work2-data:/opt/nifi/work
+      - nifi_logs2-data:/opt/nifi/logs
+      - nifi_conf2-data:/opt/nifi/conf
+    hostname: nifi2
+    environment:
+      NIFI_CLUSTER_IS_NODE: "true"
+      NIFI_ZOOKEEPER_CONNECT_STRING: "zk1:2181,zk2:2181,zk3:2181"
+      NIFI_CLUSTER_FLOW_ELECTION_MAX_CANDIDATES: "3"
+
+  nifi3:
+    image: ${REGISTRY}/apache/nifi:${NIFI_VERSION}
+    init: true
+    volumes:
+      - nifi_cont_repo3-data:/opt/nifi/content_repository
+      - nifi_db_repo3-data:/opt/nifi/database_repository
+      - nifi_ff_repo3-data:/opt/nifi/flowfile_repository
+      - nifi_prv_repo3-data:/opt/nifi/provenance_repository
+      - nifi_state3-data:/opt/nifi/state
+      - nifi_work3-data:/opt/nifi/work
+      - nifi_logs3-data:/opt/nifi/logs
+      - nifi_conf3-data:/opt/nifi/conf
+    hostname: nifi3
+    environment:
+      NIFI_CLUSTER_IS_NODE: "true"
+      NIFI_ZOOKEEPER_CONNECT_STRING: "zk1:2181,zk2:2181,zk3:2181"
+      NIFI_CLUSTER_FLOW_ELECTION_MAX_CANDIDATES: "3"
