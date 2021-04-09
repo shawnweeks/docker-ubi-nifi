@@ -22,9 +22,9 @@ RUN mkdir -p /tmp/nifi_package && \
     mkdir -p /tmp/nifi_package/run
 
 ###############################################################################
-ARG BASE_REGISTRY
-ARG BASE_IMAGE=redhat/ubi/ubi8
-ARG BASE_TAG=8.3
+# ARG BASE_REGISTRY
+# ARG BASE_IMAGE=redhat/ubi/ubi8
+# ARG BASE_TAG=8.3
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG}
 
@@ -35,11 +35,12 @@ ENV NIFI_GID 2001
 
 ENV NIFI_HOME /opt/nifi
 
-RUN yum install -y java-11-openjdk-devel python2 python2-jinja2 && \
+RUN yum install -y java-11-openjdk-devel python3 python3-jinja2 && \
     yum clean all && \
     mkdir -p ${NIFI_HOME} && \
     groupadd -r -g ${NIFI_GID} ${NIFI_GROUP} && \
-    useradd -r -u ${NIFI_UID} -g ${NIFI_GROUP} -M -d ${NIFI_HOME} ${NIFI_USER}
+    useradd -r -u ${NIFI_UID} -g ${NIFI_GROUP} -M -d ${NIFI_HOME} ${NIFI_USER} && \
+    chown ${NIFI_USER}:${NIFI_GROUP} ${NIFI_HOME} -R
 
 COPY [ "templates/*.j2", "/opt/jinja-templates/" ]
 COPY --from=build --chown=${NIFI_USER}:${NIFI_GROUP} [ "/tmp/nifi_package", "${NIFI_HOME}/" ]

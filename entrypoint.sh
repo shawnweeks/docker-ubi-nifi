@@ -14,4 +14,15 @@ entrypoint.py
 # Clears variables starting with NIFI_ to avoid any secret leakage.
 unset "${!NIFI_@}"
 
-${HOME}/bin/nifi.sh run
+set +e
+flock -x -w 30 ${HOME}/.flock ${HOME}/bin/nifi.sh run -fg &
+NIFI_PID="$!"
+
+echo "Nifi Started with PID ${NIFI_PID}"
+wait ${NIFI_PID}
+
+if [[ $? -eq 1 ]]
+then
+    echo "Nifi Failed to Aquire Lock! Exiting"
+    exit 1
+fi
