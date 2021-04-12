@@ -14,18 +14,18 @@
 # limitations under the License.
 
 # NAR and Working Directories #
-nifi.stateless.nar.directory=./lib
-nifi.stateless.working.directory=./work/stateless
+nifi.stateless.nar.directory={{ NIFI_STATELESS_NAR_DIRECTORY | default('./lib') }}
+nifi.stateless.working.directory={{ NIFI_STATELESS_WORKING_DIRECTORY | default('./work/stateless') }}
 
 # Security Properties #
-nifi.stateless.security.keystore=
-nifi.stateless.security.keystoreType=
-nifi.stateless.security.keystorePasswd=
-nifi.stateless.security.keyPasswd=
-nifi.stateless.security.truststore=
-nifi.stateless.security.truststoreType=
-nifi.stateless.security.truststorePasswd=
-nifi.stateless.sensitive.props.key=
+nifi.stateless.security.keystore={{ NIFI_STATELESS_SECURITY_KEYSTORE | default('') }}
+nifi.stateless.security.keystoreType={{ NIFI_STATELESS_SECURITY_KEYSTORETYPE | default('') }}
+nifi.stateless.security.keystorePasswd={{ NIFI_STATELESS_SECURITY_KEYSTOREPASSWD | default('') }}
+nifi.stateless.security.keyPasswd={{ NIFI_STATELESS_SECURITY_KEYPASSWD | default('') }}
+nifi.stateless.security.truststore={{ NIFI_STATELESS_SECURITY_TRUSTSTORE | default('') }}
+nifi.stateless.security.truststoreType={{ NIFI_STATELESS_SECURITY_TRUSTSTORETYPE | default('') }}
+nifi.stateless.security.truststorePasswd={{ NIFI_STATELESS_SECURITY_TRUSTSTOREPASSWD | default('') }}
+nifi.stateless.sensitive.props.key={{ NIFI_STATELESS_SENSITIVE_PROPS_KEY | default('') }}
 
 # Extension Client Configuration #
 # Zero or more Nexus repositories may be specified here.
@@ -37,4 +37,4 @@ nifi.stateless.sensitive.props.key=
 #nifi.stateless.extension.client.mvn-central.useSslContext=false
 
 # Kerberos Properties #
-nifi.stateless.kerberos.krb5.file=/etc/krb5.conf
+nifi.stateless.kerberos.krb5.file={{ NIFI_STATELESS_KERBEROS_KRB5_FILE | default('/etc/krb5.conf') }}

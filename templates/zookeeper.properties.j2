@@ -20,12 +20,12 @@
 #
 #
 
-initLimit=10
-autopurge.purgeInterval=24
-syncLimit=5
-tickTime=2000
-dataDir=./state/zookeeper
-autopurge.snapRetainCount=30
+initLimit={{ ZOOKEEPER_INITLIMIT | default('10') }}
+autopurge.purgeInterval={{ ZOOKEEPER_AUTOPURGE_PURGEINTERVAL | default('24') }}
+syncLimit={{ ZOOKEEPER_SYNCLIMIT | default('5') }}
+tickTime={{ ZOOKEEPER_TICKTIME | default('2000') }}
+dataDir={{ ZOOKEEPER_DATADIR | default('./state/zookeeper') }}
+autopurge.snapRetainCount={{ ZOOKEEPER_AUTOPURGE_SNAPRETAINCOUNT | default('30') }}
 
 # Embedded/distributed ZK TLS connection support can be activated by setting these properties at minimum:
 #
@@ -68,4 +68,4 @@ autopurge.snapRetainCount=30
 # administration guide for more details.
 #
 
-server.1=
+server.1={{ ZOOKEEPER_SERVER_1 | default('') }}
