@@ -35,7 +35,7 @@ ENV NIFI_GID 2001
 
 ENV NIFI_HOME /opt/nifi
 
-RUN yum install -y java-11-openjdk-devel python3 python3-jinja2 && \
+RUN yum install -y java-11-openjdk-devel && \
     yum clean all && \
     mkdir -p ${NIFI_HOME} && \
     groupadd -r -g ${NIFI_GID} ${NIFI_GROUP} && \
