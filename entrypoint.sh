@@ -15,7 +15,7 @@ entrypoint.py
 unset "${!NIFI_@}"
 
 set +e
-flock -x -w 30 ${HOME}/.flock ${HOME}/bin/nifi.sh run -fg &
+flock -x -w 30 ${HOME}/.flock ${HOME}/bin/nifi.sh run &
 NIFI_PID="$!"
 
 echo "Nifi Started with PID ${NIFI_PID}"
