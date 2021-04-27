@@ -1,12 +1,12 @@
 ### Download Packages
 ```shell
-export NIFI_VERSION=1.12.1
+export NIFI_VERSION=1.13.2
 wget https://archive.apache.org/dist/nifi/${NIFI_VERSION}/nifi-${NIFI_VERSION}-bin.tar.gz
 ```
 
 ### Build Command
 ```shell
-export NIFI_VERSION=1.12.1
+export NIFI_VERSION=1.13.2
 docker build \
     -t ${REGISTRY}/apache/nifi:${NIFI_VERSION} \
     --build-arg BASE_REGISTRY=$REGISTRY \
@@ -16,7 +16,7 @@ docker build \
 
 ### Push to Registry
 ```shell
-export NIFI_VERSION=1.12.1
+export NIFI_VERSION=1.13.2
 docker push ${REGISTRY}/apache/nifi:${NIFI_VERSION}
 ```
 
@@ -27,12 +27,12 @@ docker run --init -it --rm \
     -p 8080:8080 \
     -e NIFI_NODES=server1,server2,server3 \
     --entrypoint bash \
-    $REGISTRY/apache/nifi:1.12.1
+    $REGISTRY/apache/nifi:1.13.2
 ```
 
 ### Compose Run
 ```shell
-export NIFI_VERSION=1.12.1
+export NIFI_VERSION=1.13.2
 export ZOOKEEPER_VERSION=3.6.2
 docker-compose up
 ```
