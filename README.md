@@ -36,3 +36,9 @@ export NIFI_VERSION=1.13.2
 export ZOOKEEPER_VERSION=3.6.2
 docker-compose up
 ```
+### Deploy to ECS
+```shell
+aws ecs register-task-definition --cli-input-json file://dev_task_def.json
+aws ecs create-service --cli-input-json file://dev_service_def.json
+aws ecs update-service --cli-input-json file://dev_service_upd.json
+```
