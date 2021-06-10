@@ -140,9 +140,11 @@ nifi.remote.contents.cache.expiration={{ NIFI_REMOTE_CONTENTS_CACHE_EXPIRATION |
 # Be aware that changing these properties may affect how your instance can be accessed without any restriction.
 # We recommend configuring HTTPS instead. The administrators guide provides instructions on how to do this.
 
+{% if NIFI_WEB_HTTPS_PORT is not defined %}
 nifi.web.http.host={{ HOSTNAME }}
 nifi.web.http.port={{ NIFI_WEB_HTTP_PORT | default('8080') }}
 nifi.web.http.network.interface.default={{ NIFI_WEB_HTTP_NETWORK_INTERFACE_DEFAULT | default('') }}
+{% endif %}
 
 #############################################
 

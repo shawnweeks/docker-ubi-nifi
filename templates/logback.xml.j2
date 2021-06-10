@@ -20,18 +20,18 @@
     </contextListener>
 
     <appender name="APP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${org.apache.nifi.bootstrap.config.log.dir}/nifi-app.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <!--<file>${org.apache.nifi.bootstrap.config.log.dir}/nifi-app.log</file>-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--
               For daily rollover, use 'app_%d.log'.
               For hourly rollover, use 'app_%d{yyyy-MM-dd_HH}.log'.
               To GZIP rolled files, replace '.log' with '.log.gz'.
               To ZIP rolled files, replace '.log' with '.log.zip'.
             -->
-            <fileNamePattern>${org.apache.nifi.bootstrap.config.log.dir}/nifi-app_%d{yyyy-MM-dd_HH}.%i.log</fileNamePattern>
-            <maxFileSize>100MB</maxFileSize>
+            <fileNamePattern>${org.apache.nifi.bootstrap.config.log.dir}/nifi-app_%d.log</fileNamePattern>
+            <!--<maxFileSize>100MB</maxFileSize>-->
             <!-- keep 30 log files worth of history -->
-            <maxHistory>30</maxHistory>
+            <!--<maxHistory>30</maxHistory>-->
         </rollingPolicy>
         <immediateFlush>true</immediateFlush>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -40,7 +40,7 @@
     </appender>
 
     <appender name="USER_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${org.apache.nifi.bootstrap.config.log.dir}/nifi-user.log</file>
+        <!--<file>${org.apache.nifi.bootstrap.config.log.dir}/nifi-user.log</file>-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--
               For daily rollover, use 'user_%d.log'.
@@ -50,7 +50,7 @@
             -->
             <fileNamePattern>${org.apache.nifi.bootstrap.config.log.dir}/nifi-user_%d.log</fileNamePattern>
             <!-- keep 30 log files worth of history -->
-            <maxHistory>30</maxHistory>
+            <!--<maxHistory>30</maxHistory>-->
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>%date %level [%thread] %logger{40} %msg%n</pattern>
@@ -58,7 +58,7 @@
     </appender>
 
     <appender name="BOOTSTRAP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${org.apache.nifi.bootstrap.config.log.dir}/nifi-bootstrap.log</file>
+        <!--<file>${org.apache.nifi.bootstrap.config.log.dir}/nifi-bootstrap.log</file>-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--
               For daily rollover, use 'user_%d.log'.
@@ -68,7 +68,7 @@
             -->
             <fileNamePattern>${org.apache.nifi.bootstrap.config.log.dir}/nifi-bootstrap_%d.log</fileNamePattern>
             <!-- keep 5 log files worth of history -->
-            <maxHistory>5</maxHistory>
+            <!--<maxHistory>5</maxHistory>-->
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>%date %level [%thread] %logger{40} %msg%n</pattern>
