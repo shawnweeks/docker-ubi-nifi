@@ -42,3 +42,10 @@ aws ecs register-task-definition --cli-input-json file://dev_task_def.json
 aws ecs create-service --cli-input-json file://dev_service_def.json
 aws ecs update-service --cli-input-json file://dev_service_upd.json
 ```
+
+### Environment Variables
+| Variable Name | Description | Default Value |
+| --- | --- | --- |
+| NIFI_SSL_KEY | Key string to import into keystore.jks. | |
+| NIFI_SSL_KEY_PASS | Key passphrase. | |
+| NIFI_SSL_CERT | Certificate string to import into keystore.jks. | |

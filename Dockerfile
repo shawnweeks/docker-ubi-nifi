@@ -22,9 +22,6 @@ RUN mkdir -p /tmp/nifi_package && \
     mkdir -p /tmp/nifi_package/run
 
 ###############################################################################
-# ARG BASE_REGISTRY
-# ARG BASE_IMAGE=redhat/ubi/ubi8
-# ARG BASE_TAG=8.3
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG}
 
@@ -35,7 +32,7 @@ ENV NIFI_GID 2001
 
 ENV NIFI_HOME /opt/nifi
 
-RUN yum install -y java-11-openjdk-devel && \
+RUN yum install -y java-11-openjdk-devel openssl && \
     yum clean all && \
     mkdir -p ${NIFI_HOME} && \
     groupadd -r -g ${NIFI_GID} ${NIFI_GROUP} && \
